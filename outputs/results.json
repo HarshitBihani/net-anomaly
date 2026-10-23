@@ -1,0 +1,555 @@
+{
+ "data": {
+  "train": 100778,
+  "validation": 25195,
+  "test": 22544,
+  "test_attacks": 12833,
+  "test_unseen_attacks": 3750,
+  "unseen_types": [
+   "apache2",
+   "httptunnel",
+   "mailbomb",
+   "mscan",
+   "named",
+   "processtable",
+   "ps",
+   "saint",
+   "sendmail",
+   "snmpgetattack",
+   "snmpguess",
+   "sqlattack",
+   "udpstorm",
+   "worm",
+   "xlock",
+   "xsnoop",
+   "xterm"
+  ],
+  "seen_types": 22
+ },
+ "fpr_budget": 0.01,
+ "results": {
+  "Logistic regression (supervised)": {
+   "name": "Logistic regression (supervised)",
+   "roc_auc": 0.7504987973039562,
+   "pr_auc": 0.8437301251342064,
+   "recall": 0.5953401387049014,
+   "false_alarm_rate": 0.07383379672536299,
+   "precision": 0.914203661601053,
+   "f1": 0.7210948560641812,
+   "recall_seen_attacks": 0.7067048332048883,
+   "recall_unseen_attacks": 0.3256,
+   "roc_auc_unseen_only": 0.6670282634812755,
+   "recall_by_family": {
+    "DoS": 0.8064343163538874,
+    "Probe": 0.6629491945477075,
+    "R2L": 0.0038128249566724438,
+    "U2R": 0.11940298507462686
+   },
+   "recall_at_1pct_false_alarms": 0.32120314813371775,
+   "unseen_recall_at_1pct_false_alarms": 0.0232,
+   "recall_at_5pct_false_alarms": 0.41315358840489363,
+   "unseen_recall_at_5pct_false_alarms": 0.047733333333333336
+  },
+  "Random forest (supervised)": {
+   "name": "Random forest (supervised)",
+   "roc_auc": 0.9663864303798622,
+   "pr_auc": 0.9704248435981856,
+   "recall": 0.8398659705446895,
+   "false_alarm_rate": 0.09762125424776028,
+   "precision": 0.9191540167149923,
+   "f1": 0.8777230343255017,
+   "recall_seen_attacks": 0.8493889684025102,
+   "recall_unseen_attacks": 0.8168,
+   "roc_auc_unseen_only": 0.9452216798819209,
+   "recall_by_family": {
+    "DoS": 0.9638069705093834,
+    "Probe": 0.9979347377116894,
+    "R2L": 0.38925476603119585,
+    "U2R": 0.7313432835820896
+   },
+   "recall_at_1pct_false_alarms": 0.4533624249980519,
+   "unseen_recall_at_1pct_false_alarms": 0.058666666666666666,
+   "recall_at_5pct_false_alarms": 0.7849294786877581,
+   "unseen_recall_at_5pct_false_alarms": 0.6674666666666667
+  },
+  "Isolation Forest (normal traffic only)": {
+   "name": "Isolation Forest (normal traffic only)",
+   "roc_auc": 0.9507576528092161,
+   "pr_auc": 0.9595696604772042,
+   "recall": 0.5575469492714097,
+   "false_alarm_rate": 0.012872000823808053,
+   "precision": 0.9828296703296703,
+   "f1": 0.7114801372246806,
+   "recall_seen_attacks": 0.6023340306066277,
+   "recall_unseen_attacks": 0.44906666666666667,
+   "roc_auc_unseen_only": 0.953175395599492,
+   "recall_by_family": {
+    "DoS": 0.6946380697050938,
+    "Probe": 0.778603882693102,
+    "R2L": 0.025649913344887348,
+    "U2R": 0.208955223880597
+   },
+   "recall_at_1pct_false_alarms": 0.5368970622613575,
+   "unseen_recall_at_1pct_false_alarms": 0.4056,
+   "recall_at_5pct_false_alarms": 0.734746357048235,
+   "unseen_recall_at_5pct_false_alarms": 0.7530666666666667
+  },
+  "PCA reconstruction (normal traffic only)": {
+   "name": "PCA reconstruction (normal traffic only)",
+   "roc_auc": 0.9519266467392488,
+   "pr_auc": 0.9485325793878046,
+   "recall": 0.20112210706771605,
+   "false_alarm_rate": 0.00442796828338997,
+   "precision": 0.9836128048780488,
+   "f1": 0.3339587242026267,
+   "recall_seen_attacks": 0.24727512936254542,
+   "recall_unseen_attacks": 0.08933333333333333,
+   "roc_auc_unseen_only": 0.935705790684104,
+   "recall_by_family": {
+    "DoS": 0.221313672922252,
+    "Probe": 0.16026435357290375,
+    "R2L": 0.17400346620450607,
+    "U2R": 0.5970149253731343
+   },
+   "recall_at_1pct_false_alarms": 0.3191771214836749,
+   "unseen_recall_at_1pct_false_alarms": 0.3389333333333333,
+   "recall_at_5pct_false_alarms": 0.7250058443076444,
+   "unseen_recall_at_5pct_false_alarms": 0.6088
+  },
+  "Ensemble (forest + isolation forest)": {
+   "name": "Ensemble (forest + isolation forest)",
+   "roc_auc": 0.9620092118629868,
+   "pr_auc": 0.9670940379996837,
+   "recall": 0.6564326346138861,
+   "false_alarm_rate": 0.027597569766244466,
+   "precision": 0.9691670501610676,
+   "f1": 0.7827177700348432,
+   "recall_seen_attacks": 0.6557304855224045,
+   "recall_unseen_attacks": 0.6581333333333333,
+   "roc_auc_unseen_only": 0.9596315793086877,
+   "recall_by_family": {
+    "DoS": 0.7819034852546917,
+    "Probe": 0.9814126394052045,
+    "R2L": 0.06412478336221837,
+    "U2R": 0.44776119402985076
+   },
+   "recall_at_1pct_false_alarms": 0.5297280448842827,
+   "unseen_recall_at_1pct_false_alarms": 0.3605333333333333,
+   "recall_at_5pct_false_alarms": 0.7402789682848905,
+   "unseen_recall_at_5pct_false_alarms": 0.7517333333333334
+  }
+ },
+ "thresholds": {
+  "Logistic regression (supervised)": 0.7074463575718083,
+  "Random forest (supervised)": 0.1180774023551185,
+  "Isolation Forest (normal traffic only)": 0.5381867501002806,
+  "PCA reconstruction (normal traffic only)": 76.39756690021774,
+  "Ensemble (forest + isolation forest)": 0.968492092954191
+ },
+ "prioritisation": {
+  "by suspicion score only": {
+   "alerts_read": 880,
+   "real_attacks": 875,
+   "high_severity_found": 0
+  },
+  "by suspicion x severity": {
+   "alerts_read": 880,
+   "real_attacks": 861,
+   "high_severity_found": 83
+  },
+  "_total_R2L_U2R_in_replayed_data": 2877
+ },
+ "shifts": [
+  {
+   "shift": 1,
+   "connections": 1000,
+   "true_attacks": 549,
+   "alarms": 359,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 40,
+   "rarest_in_top_risk": 3
+  },
+  {
+   "shift": 2,
+   "connections": 1000,
+   "true_attacks": 565,
+   "alarms": 378,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 39,
+   "rarest_in_top_risk": 1
+  },
+  {
+   "shift": 3,
+   "connections": 1000,
+   "true_attacks": 554,
+   "alarms": 376,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 40,
+   "rarest_in_top_risk": 6
+  },
+  {
+   "shift": 4,
+   "connections": 1000,
+   "true_attacks": 558,
+   "alarms": 402,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 40,
+   "rarest_in_top_risk": 3
+  },
+  {
+   "shift": 5,
+   "connections": 1000,
+   "true_attacks": 561,
+   "alarms": 389,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 40,
+   "rarest_in_top_risk": 6
+  },
+  {
+   "shift": 6,
+   "connections": 1000,
+   "true_attacks": 534,
+   "alarms": 343,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 38,
+   "rarest_in_top_risk": 3
+  },
+  {
+   "shift": 7,
+   "connections": 1000,
+   "true_attacks": 564,
+   "alarms": 388,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 39,
+   "rarest_in_top_risk": 5
+  },
+  {
+   "shift": 8,
+   "connections": 1000,
+   "true_attacks": 576,
+   "alarms": 392,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 40,
+   "rarest_in_top_risk": 3
+  },
+  {
+   "shift": 9,
+   "connections": 1000,
+   "true_attacks": 554,
+   "alarms": 377,
+   "real_in_top_score": 39,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 39,
+   "rarest_in_top_risk": 8
+  },
+  {
+   "shift": 10,
+   "connections": 1000,
+   "true_attacks": 587,
+   "alarms": 400,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 39,
+   "rarest_in_top_risk": 3
+  },
+  {
+   "shift": 11,
+   "connections": 1000,
+   "true_attacks": 588,
+   "alarms": 415,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 40,
+   "rarest_in_top_risk": 3
+  },
+  {
+   "shift": 12,
+   "connections": 1000,
+   "true_attacks": 556,
+   "alarms": 359,
+   "real_in_top_score": 39,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 39,
+   "rarest_in_top_risk": 5
+  },
+  {
+   "shift": 13,
+   "connections": 1000,
+   "true_attacks": 582,
+   "alarms": 394,
+   "real_in_top_score": 39,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 39,
+   "rarest_in_top_risk": 3
+  },
+  {
+   "shift": 14,
+   "connections": 1000,
+   "true_attacks": 618,
+   "alarms": 417,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 38,
+   "rarest_in_top_risk": 5
+  },
+  {
+   "shift": 15,
+   "connections": 1000,
+   "true_attacks": 568,
+   "alarms": 384,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 39,
+   "rarest_in_top_risk": 0
+  },
+  {
+   "shift": 16,
+   "connections": 1000,
+   "true_attacks": 559,
+   "alarms": 394,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 39,
+   "rarest_in_top_risk": 2
+  },
+  {
+   "shift": 17,
+   "connections": 1000,
+   "true_attacks": 575,
+   "alarms": 380,
+   "real_in_top_score": 39,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 38,
+   "rarest_in_top_risk": 7
+  },
+  {
+   "shift": 18,
+   "connections": 1000,
+   "true_attacks": 593,
+   "alarms": 398,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 38,
+   "rarest_in_top_risk": 1
+  },
+  {
+   "shift": 19,
+   "connections": 1000,
+   "true_attacks": 573,
+   "alarms": 397,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 40,
+   "rarest_in_top_risk": 6
+  },
+  {
+   "shift": 20,
+   "connections": 1000,
+   "true_attacks": 590,
+   "alarms": 391,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 40,
+   "rarest_in_top_risk": 5
+  },
+  {
+   "shift": 21,
+   "connections": 1000,
+   "true_attacks": 554,
+   "alarms": 378,
+   "real_in_top_score": 40,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 39,
+   "rarest_in_top_risk": 2
+  },
+  {
+   "shift": 22,
+   "connections": 1000,
+   "true_attacks": 574,
+   "alarms": 374,
+   "real_in_top_score": 39,
+   "rarest_in_top_score": 0,
+   "real_in_top_risk": 38,
+   "rarest_in_top_risk": 3
+  }
+ ],
+ "alerts_per_shift": 40,
+ "shift_size": 1000,
+ "severity_assumption": {
+  "U2R": 4.0,
+  "R2L": 3.0,
+  "Probe": 2.0,
+  "DoS": 1.0
+ },
+ "explanations": [
+  {
+   "kind": "unseen attack, caught",
+   "attack": "saint",
+   "service": "other",
+   "reasons": [
+    [
+     "src_bytes",
+     "0",
+     0.257
+    ],
+    [
+     "dst_host_srv_count",
+     "1",
+     0.195
+    ],
+    [
+     "dst_host_diff_srv_rate",
+     "1.0",
+     0.192
+    ],
+    [
+     "dst_host_same_srv_rate",
+     "0.0",
+     0.174
+    ],
+    [
+     "dst_bytes",
+     "0",
+     0.102
+    ]
+   ]
+  },
+  {
+   "kind": "unseen attack, caught",
+   "attack": "apache2",
+   "service": "http",
+   "reasons": [
+    [
+     "src_bytes",
+     "55744",
+     0.206
+    ],
+    [
+     "flag",
+     "RSTR",
+     0.118
+    ],
+    [
+     "dst_host_rerror_rate",
+     "0.54",
+     0.098
+    ],
+    [
+     "dst_host_srv_rerror_rate",
+     "0.56",
+     0.046
+    ],
+    [
+     "rerror_rate",
+     "1.0",
+     0.045
+    ]
+   ]
+  },
+  {
+   "kind": "unseen attack, caught",
+   "attack": "apache2",
+   "service": "http",
+   "reasons": [
+    [
+     "flag",
+     "S0",
+     0.091
+    ],
+    [
+     "srv_serror_rate",
+     "0.85",
+     0.085
+    ],
+    [
+     "serror_rate",
+     "0.85",
+     0.079
+    ],
+    [
+     "logged_in",
+     "0",
+     0.072
+    ],
+    [
+     "dst_host_srv_serror_rate",
+     "0.18",
+     0.071
+    ]
+   ]
+  },
+  {
+   "kind": "false alarm",
+   "attack": "normal",
+   "service": "eco_i",
+   "reasons": [
+    [
+     "protocol_type",
+     "icmp",
+     0.226
+    ],
+    [
+     "dst_bytes",
+     "0",
+     0.111
+    ],
+    [
+     "logged_in",
+     "0",
+     0.111
+    ],
+    [
+     "src_bytes",
+     "40008",
+     0.111
+    ],
+    [
+     "dst_host_rerror_rate",
+     "0.03",
+     0.078
+    ]
+   ]
+  },
+  {
+   "kind": "false alarm",
+   "attack": "normal",
+   "service": "other",
+   "reasons": [
+    [
+     "src_bytes",
+     "1",
+     0.591
+    ],
+    [
+     "dst_bytes",
+     "0",
+     0.191
+    ],
+    [
+     "logged_in",
+     "0",
+     0.179
+    ],
+    [
+     "protocol_type",
+     "udp",
+     0.151
+    ],
+    [
+     "dst_host_same_srv_rate",
+     "0.04",
+     0.148
+    ]
+   ]
+  }
+ ],
+ "seconds": 23
+}
